@@ -1,5 +1,7 @@
+/* 구글 폰트 불러오기 */
 @import url('https://fonts.googleapis.com/css?family=Montserrat:100,200,300,400,500,600,700,800&display=swap');
 
+/* 문서 전체에 적용 */
 * {
     font-family: 'Montserrat';
 }
@@ -11,6 +13,8 @@ body,h1,h2 {
 
 
 body {
+    /* 이거는 code lion에서 보일 수 있도록 해주는 태그 */
+    /* content 내용 이하로 width 안 내려가게 ... */
     min-width: fit-content;
 }
 
@@ -27,6 +31,7 @@ h2 {
     color:#282828;
     font-weight: lighter;
     margin-bottom: 16px;
+    /* 아래에 줄 */
     border-bottom: 1px solid #ebebeb;
     padding-bottom: 5px;
 }
@@ -39,6 +44,7 @@ h2 {
 
 .about-me-text {
     font-size:10px;
+    /* line-height : 줄 간격, 폰트 size가 10px일 때 보기 좋게... */
     line-height: 16px;
 }
 
@@ -49,6 +55,7 @@ h2 {
     margin-right: auto;
     margin-left: auto;
     border: 1px solid #ebebeb;
+    /* box-shadow 속성은  */ 
     box-shadow: 0 1px 20px 0 rgba(0, 0, 0, 0.1);
 }
 
@@ -56,11 +63,14 @@ section {
     margin-bottom:24px;
 }
 
+
 .float-wrap {
+    /* overflow hidden으로 두어 float 요소들 안 겹치도록 하는 것 */
     overflow: hidden;
     margin-bottom: 4px;
 }
 
+/* 한쪽은 왼쪽 정렬, 한쪽은 오른쪽 정렬을 하기 위해 float 사용 */
 .title-text {
     font-size:11px;
     font-weight: bold;

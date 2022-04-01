@@ -1,53 +1,75 @@
+<!-- 이 파일이 html임을 알려주는 코드, 없어도 동작하긴 함 -->
 <!DOCTYPE html>
 <html>
-<head>
-  <meta charset="UTF-8">
-  <title>김멋사의 이력서</title>
-  <link rel="stylesheet" href="codelion.css">
-</head>
-<body>
-  <div class="mainbox">
-    <div class="title-box">
-        <h1>김멋사</h1>
-        <p class="name-text">HTML/CSS 개발자</p>
-    </div>
-    <section>
-      <h2>ABOUT ME</h2>
-      <p class="about-me-text">
-      Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
-      </p>
-    </section>
-    <section>
+
+
+  <!-- HTML을 보조하는 역할 -->
+  <head> 
+    <meta charset="UTF-8"> <!-- 한글 사용을 위함 -->
+    <title>이지원의 이력서</title> <!-- 페이지 제목 -->
+    <link rel="stylesheet" href="codelion.css"> <!-- css 파일 링크 -->
+  </head>
+
+
+  <!-- 내용 부분 -->
+  <body>
+    <div class="mainbox">
+
+      <div class="title-box">
+        <h1>이지원</h1> <!-- 가장 큰 제목 -->
+        <p class="name-text">다재다능 개발자</p>
+      </div>
+
+      <section> <!-- div와 같은 역할을 하는 시멘틱 태그 -->
+        <h2>ABOUT ME</h2>
+        <p class="about-me-text">
+          Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore
+          magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo
+          consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla
+          pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est
+          laborum.
+        </p>
+      </section>
+
+      <section>
         <h2>EXPERIENCE</h2>
-        <div class="float-wrap">
+
+        <div class="float-wrap">  <!-- float로 떠다니는 p태그들을 가두기 위한 div -->
           <p class="title-text">Awesome Programming Company</p>
           <p class="year-text">2020 - Now</p>
         </div>
+
         <p class="desc-text">Front-End Web Developer</p>
         <p class="desc-subtext">HTML/CSS, JS, React, ...</p>
+
         <div class="float-wrap">
           <p class="title-text">Ministry of Health</p>
           <p class="year-text">2015 - 2018</p>
         </div>
+
         <p class="desc-text">UI/UX Designer</p>
         <p class="desc-subtext">Web design</p>
+
         <div class="float-wrap">
-            <p class="title-text">Freelance Work</p>
-            <p class="year-text">2011 - 2015</p>
+          <p class="title-text">Freelance Work</p>
+          <p class="year-text">2011 - 2015</p>
         </div>
+
         <p class="desc-text">Graphic Designer</p>
         <p class="desc-subtext">Graphic Design, Editorial Design</p>
       </section>
 
       <div class="sns-wrap">
         <a href="http://facebook.com"><img class="sns-img" src="images/facebook.png"></a>
-        <img class="sns-img" src="images/twitter.png">
-        <img class="sns-img" src="images/linked-in.png">
-        <img class="sns-img" src="images/insta.png">
+        <a href="http://facebook.com"></a><img class="sns-img" src="images/twitter.png"></a>
+        <a href="http://facebook.com"></a><img class="sns-img" src="images/linked-in.png"></a>
+        <a href="http://facebook.com"></a><img class="sns-img" src="images/insta.png"></a>
       </div>
-  </div>
-  <footer>
+    </div>
+    
+    <footer>
       <p>Copyright CODE LION All rights reserved. </p>
-  </footer>
-</body>
+    </footer>
+  </body>
+
 </html>
