@@ -32,3 +32,16 @@ print("교집합 : ", menu)
 
 menu = foods_set - foods_set2 # 차집합 
 print("차집합 : ", menu)
+
+# if문 -> 조건에 따라 다르게 실행하는 분기문
+import random
+
+food = random.choice(["된장찌개","피자","제육볶음"])
+print(food)
+
+if(food == "제육볶음"):
+    print("곱배기 주세요")
+else:
+    print("그냥 주세요")
+    
+print("종료")
