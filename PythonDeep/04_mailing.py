@@ -49,5 +49,3 @@ message["To"] = "$$$@gmail.com"
 smtp.login("###@gmail.com", "PASSWORD") 
 smtp.send_message(message) # MIME 형태의 메시지 전송
 smtp.quit() # 서버 닫기 
-
-
