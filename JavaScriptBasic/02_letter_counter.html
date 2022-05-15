@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="ko">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>자소서 글자수 계산기</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+    <h1>자기소개</h1>
+    <textarea class="form-control" rows="3" id="jasoseol" onkeydown="counter()">저는 인성 문제가 없습니다</textarea><br>
+    <span id="count">(0/200)</span>
+
+    <script>
+        // 함수 -> 명령어의 모음, function 키워드로 정의 
+        function counter() {
+            var content = document.getElementById("jasoseol").value;
+            // HTML이 아닌 콘솔에 출력도 가능
+            console.log(content.length); // 공백 포함된 string 글자 수 계산
+
+                // 글자수 200자 제한 주기
+            if (content.length > 200) {
+                content = content.substring(0,200);
+                document.getElementById('jasoseol').value = content;
+            }
+
+            // 글자 수 출력
+            document.getElementById('count').innerHTML = "(" + content.length + "/200)"
+        };
+
+        // initial call 
+        counter();
+        
+    </script>
+</body>
+
+</html>

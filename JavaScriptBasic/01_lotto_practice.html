@@ -35,14 +35,40 @@
 
         document.write("<h3>3 : 공 여러 개 효율적으로 뽑기 </h3>");
         // 반복문 1. for문 
+        // 반복문 2. while문
         lotto = []
         for (var i=0 ; i<6 ; i++ ) {
             lotto.push( parseInt(Math.random() * 45 + 1) ); 
         }
         document.write(lotto + "<hr>");
-        
 
-        document.write("<h3>3 : 공 여러 개 효율적으로 뽑기 </h3>");
+
+        document.write("<h3>4 : 중복 값 제거하기 </h3>");
+        // 조건문 if -> 조건이 참/거짓일 경우 나눠서 실행 
+        // array.indexOf(값) -> 값이 배열에 존재하면 위치, 없다면 -1 반환
+        lotto = []
+        while(lotto.length < 6) {
+            var num = parseInt(Math.random() * 45 + 1); 
+            if ( lotto.indexOf(num) == -1 ) {
+                lotto.push(num);
+            } 
+        }
+        document.write(lotto + "<hr>");
+
+
+        document.write("<h3>5 : 값 정렬하기 </h3>");
+        // .sort() 사용, 기본 값은 사전 순 ... 
+        // (a, b)=>a-b 라는 수식을 넣어 오름차순으로 정렬 가능 
+        // b-a는 내림차순 !
+        lotto = []
+        while(lotto.length < 6) {
+            var num = parseInt(Math.random() * 45 + 1); 
+            if ( lotto.indexOf(num) == -1 ) {
+                lotto.push(num);
+            } 
+        }
+        
+        document.write(lotto.sort((a, b)=>a-b) + "<hr>");
     </script>
 </body>
 </html>
