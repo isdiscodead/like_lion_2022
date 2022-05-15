@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>로또 번호 추첨기</title>
+</head>
+<body>
+    <h1>로또 번호 추첨기</h1>
+    <script>
+        document.write("<h3>1 : 랜덤한 공 한 개 뽑기 </h3>");
+        // math.random()으로 0~1 사이의 실수를 랜덤하게 구할 수 있음 
+        var num = Math.random();
+        document.write(num + "  ");
+        // 1~45의 숫자를 구해야하므로 45를 곱해 0~45 미만의 실수를 구할 수 있음 + 1하여 1~45
+        num = Math.random() * 45 + 1 
+        document.write(num + "  ");
+        // 정수로 바꾸어 소수점 아래 삭제
+        num = parseInt(Math.random() * 45 + 1);
+        document.write(num + "<hr>");
+        
+
+        document.write("<h3>2 : 랜덤한 공 여러 개 뽑기 </h3>");
+        // 배열(Array)와 반복문을 통해 동일한 작업 진행
+        // var lotto = [1, 2, 3, 4, 5, 6]; -> lotto[3] == 4
+        var lotto = []
+        lotto.push( parseInt(Math.random() * 45 + 1) ); 
+        lotto.push( parseInt(Math.random() * 45 + 1) ); 
+        lotto.push( parseInt(Math.random() * 45 + 1) ); 
+        lotto.push( parseInt(Math.random() * 45 + 1) ); 
+        lotto.push( parseInt(Math.random() * 45 + 1) ); 
+        lotto.push( parseInt(Math.random() * 45 + 1) ); 
+        document.write(lotto + "<hr>");
+        
+
+        document.write("<h3>3 : 공 여러 개 효율적으로 뽑기 </h3>");
+        // 반복문 1. for문 
+        lotto = []
+        for (var i=0 ; i<6 ; i++ ) {
+            lotto.push( parseInt(Math.random() * 45 + 1) ); 
+        }
+        document.write(lotto + "<hr>");
+        
+
+        document.write("<h3>3 : 공 여러 개 효율적으로 뽑기 </h3>");
+    </script>
+</body>
+</html>
