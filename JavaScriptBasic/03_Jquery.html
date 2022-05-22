@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <title>jQuery 기초</title>
+</head>
+
+<body>
+    <h1>jQuery 기초</h1>
+    <textarea id="content">jQuery를 배워보자</textarea>
+    <script src="https://code.jquery.com/jquery-3.5.1.js"
+    integrity="sha256-QWo7LDvxbWT2tbbQ97B53yJnYU3WhH/C8ycbRAkjPDc="
+    crossorigin="anonymous"></script>
+
+    <button id="click">클릭</button>
+    <button id="click2">클릭2</button>
+    
+    <script> 
+        // $(선택자).val();로 값 가져오기
+        // 선택자는 CSS 문법과 동일함 
+        console.log($('#content').val());
+
+        // $(선택자).click(함수명); 으로 클릭 이벤트 핸들링 가능
+        function hello() {
+            console.log('hello');
+        }
+        $('#click').click(hello);
+
+        // 익명 함수 -> 함수 정의 없이 바로 사용 
+        // 한 번만 사용할 함수를 만드는 데 자주 이용
+        $('#click2').click(function() {
+            console.log('hello2');
+        });
+    </script>
+</body>
+</html>
