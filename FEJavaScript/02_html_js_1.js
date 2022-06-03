@@ -1,0 +1,1 @@
+document.getElementById("lion").style.color = "red";
