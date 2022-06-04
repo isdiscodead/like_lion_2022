@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    
+    <style>
+        .blue {
+            width: 0px;
+            height: 5px;
+            background-color: cornflowerblue;
+        }
+
+        .lyrics {
+            width: 250px;
+            height: 150px;
+            overflow: scroll;
+            background-color: aliceblue;
+        }
+    </style>
+</head>
+<body>
+    <div class="blue"></div>
+    <div class="lyrics">
+        <p>
+            나는 너와 어디든 함께하고
+            네가 없는 날에는 길을 잃어
+            지금처럼 무른 새벽이 오면
+            난 너를 따라 계속 걸어가
+            아주 오래전에 너를 따라 오른 곳
+            수많은 헤드라이트 속엔 누구도 없어
+            같은 반복은 없어 나는 닦인 눈으로
+            모두가 잠든 다리 위를 건너가네
+            나는 너와 걸었던 많은 길을
+            계속 떠올려 또다시 걸어가
+            아침 아홉 시의 멍청한 머리보다
+            더 선명히 기억할 수 있도록
+            아주 오래전에 너를 따라 오른 곳
+            수많은 헤드라이트 속엔 누구도 없어
+            같은 반복은 없어 나는 닦인 눈으로
+            모두가 잠든 다리 위를 건너가네
+            지나온 너와 마주칠 때
+            숨길 수 없는 것들이 있어도
+
+            언젠가 너와 나 중에
+            누굴 선택해야한다면
+            나는 너를 고르고 멀리 떠날래
+            그런 나를 이해해줄까
+            딱히 도망가는 건 아닌데
+            그냥 그런 나라고 기억해도 돼
+            사랑했던 건 다시 못보겠지만
+            차라리 이게 더 나을 거야
+            내 마음을 모두 다 말해 줄 순 없나 봐
+            오래 기억될 무얼 남겨줄게
+            언젠가 너와 나 중에
+            누가 멈춰서야 한다면
+            나는 잡은 손을 놓고선 숨을래
+            그런 내가 미워보일까
+            미안한 맘이 없진 않은데
+            그냥 그런 나라고 기억해도 돼
+            사랑했던 건 다시 못보겠지만
+            차라리 이게 더 나을 거야
+            내 마음을 모두 다 말해 줄 순 없나 봐
+            오래 기억될 무얼 남겨줄게
+            사랑했던 건 다시 못보겠지만
+            차라리 이게 더 나을 거야
+            내 마음을 모두 다 말해 줄 순 없나 봐
+            오래 기억될 무얼 남겨줄게
+        </p>
+    </div>
+
+    <script>
+        let bar = document.querySelector('.blue');
+        let lyric = document.querySelector('.lyrics');
+
+        lyric.addEventListener("scroll", function() {
+            let scrollTop = lyric.scrollTop;
+            let scrollHeight = lyric.scrollHeight;
+            let per = scrollTop / scrollHeight;
+
+            bar.style.width = `${per * 250}px`;
+        })
+    </script>
+</body>
+</html>
