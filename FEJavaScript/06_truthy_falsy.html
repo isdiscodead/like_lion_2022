@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=<device-width>, initial-scale=1.0">
+    <title>Truthy & Falsy</title>
+
+    <script>
+        const input = prompt();
+        if ( input === "" ) {
+            console.log("입력 값이 비어있습니다.");
+
+        } else if (!input) { // 동일한 조건 ... 
+            // !'' -> true
+            // !'hello' -> false
+            console.log("입력 값이 비어있습니다."); 
+            // undefined, null, 0, '', NaN은 falsy한 값 
+
+        } else {
+            console.log(input);
+        }
+    </script>
+</head>
+
+<body>
+    Please check the console.
+</body>
+</html>
