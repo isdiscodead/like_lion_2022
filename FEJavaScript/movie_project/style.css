@@ -1,0 +1,42 @@
+ul, li {
+    list-style: none;
+}
+
+html {
+    background: #333;
+    color: whitesmoke;
+    box-sizing: content-box;
+}
+
+h1 {
+    color: red;
+    font-size: 50px;
+}
+
+body {
+    padding: 0px 20px;
+}
+
+h3 {
+    font-size: 30px;
+}
+
+ul {
+    display: flex;
+    flex-direction: row;
+}
+
+img {
+    width: 300px;
+}
+
+h4 {
+    margin: 5px;
+    font-size: 20px;
+}
+
+div {
+    display: flex;
+    flex-direction: column;
+    align-items: cneter;
+}
