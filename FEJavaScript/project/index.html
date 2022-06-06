@@ -72,7 +72,7 @@
             </div>
         </div>
 
-        <div>
+        <div style="width: 100%; text-align: center; margin-bottom: 64px;">
             <a href="javascript:setShare()"><img src="./img/icon-kakao.png" class="sharebtn_custom" title="카카오톡으로 공유하기"/></a>
         </div>
     </section>
@@ -81,6 +81,9 @@
     <script src="./js/data.js"></script>
 
     <script type="text/javascript">
+        Kakao.init('API 코드');
+        Kakao.isInitialized();
+
         var resultImg = document.querySelector("#resultImg");
         var resultAlt = resultImg.firstElementChild.alt;
         const shareTitle = "나의 개발자 유형은 무엇일까? 나의 개발자 유형을 확인해보고 공유해보자!!";
