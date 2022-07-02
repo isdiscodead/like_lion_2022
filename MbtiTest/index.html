@@ -21,10 +21,10 @@
     </article>
 
     <article class="question" style="display: none;">
-        <div class="progress">
-            <div class="progress-bar" role="progressbar" style="width: 25%;" aria-valuenow="0" aria-valuemin="100" aria-valuemax="0"> </div>
+        <div class="progress mt-5">
+            <div class="progress-bar" role="progressbar" style="width: calc(100/12*1%);"></div>
         </div>
-        <h2 class="text-center mt-5">문제</h2> 
+        <h2 class="text-center mt-5" id="title">문제</h2> 
         <input type="hidden" value="EI">
         <button id="A" type="button" class="btn btn-primary mt-5">Primary</button>
         <button id="B" type="button" class="btn btn-primary mt-5">Primary</button>
@@ -46,16 +46,41 @@
     crossorigin="anonymous"></script>
 
     <script>
-    function start() {
-        $(".start").hide();
-        $(".question").show();
-    }
+        var num = 1;
+        var q = {
+            1 : {"title" : "문제 1번", "type":"EI", "A":"E", "B":"I"},
+            2 : {"title" : "문제 2번", "type":"EI", "A":"E", "B":"I"},
+            3 : {"title" : "문제 3번", "type":"EI", "A":"E", "B":"I"},
 
-    $("#A").click( function() {
-        var type = $("#type").val();
-        var preValue = $("#" + type).val();
-        console.log(parseInt(preValue)+1);
-    })
+        }
+        
+        function start() {
+            $(".start").hide();
+            next();
+            $(".question").show();
+        }
+
+        $("#A").click( function() {
+            var type = $("#type").val();
+            var preValue = $("#" + type).val();
+            // console.log(parseInt(preValue)+1);
+            next();
+        });
+
+        $("#B").click( function() {
+            next();
+        });
+
+        function next() {
+            $(".progressbar").attr("style", "width: calc(100/12*" +num+ "%)");
+            $("#title").html(q[num]["title"]);
+            $("#type").html(q[num]["type"]);
+            $("#A").html(q[num]["A"]);
+            $("#B").html(q[num]["B"]);
+            if ( num < 3 ) {
+                num++;
+            }
+        }
     </script>
 </body>
 </html>
