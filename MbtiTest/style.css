@@ -2,7 +2,7 @@ article {
     display: flex;
     flex-direction: column;
     align-items: center;
- }
+}
 
 button {
     display: block;
@@ -11,4 +11,15 @@ button {
 
 .question {
     display: none;
- }
+}
+
+.result {
+    display: none;
+}
+
+#img {
+    width: 300px;
+    height: 300px;
+    margin: 0 auto;
+    object-fit: cover;
+}
