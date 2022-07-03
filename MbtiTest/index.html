@@ -25,9 +25,15 @@
             <div class="progress-bar" role="progressbar" style="width: calc(100/12*1%);"></div>
         </div>
         <h2 class="text-center mt-5" id="title">문제</h2> 
-        <input type="hidden" value="EI">
+        <input type="hidden" id="type" value="EI">
         <button id="A" type="button" class="btn btn-primary mt-5">Primary</button>
         <button id="B" type="button" class="btn btn-primary mt-5">Primary</button>
+    </article>
+
+    <article class="result"> 
+        <img src="" alt="">
+        <h2 id="animal">동물 이름</h2>
+        <h3 id="explain">설명</h3>
     </article>
 
     <input type="hidden" id="EI" value="0">
@@ -51,7 +57,15 @@
             1 : {"title" : "문제 1번", "type":"EI", "A":"E", "B":"I"},
             2 : {"title" : "문제 2번", "type":"EI", "A":"E", "B":"I"},
             3 : {"title" : "문제 3번", "type":"EI", "A":"E", "B":"I"},
-
+            4 : {"title" : "문제 4번", "type":"SN", "A":"S", "B":"N"},
+            5 : {"title" : "문제 5번", "type":"SN", "A":"S", "B":"N"},
+            6 : {"title" : "문제 6번", "type":"SN", "A":"S", "B":"N"},
+            7 : {"title" : "문제 7번", "type":"TF", "A":"T", "B":"F"},
+            8 : {"title" : "문제 8번", "type":"TF", "A":"T", "B":"F"},
+            9 : {"title" : "문제 9번", "type":"TF", "A":"T", "B":"F"},
+            10 : {"title" : "문제 10번", "type":"JP", "A":"J", "B":"P"},
+            11 : {"title" : "문제 11번", "type":"JP", "A":"J", "B":"P"},
+            12 : {"title" : "문제 12번", "type":"JP", "A":"J", "B":"P"}
         }
         
         function start() {
@@ -63,6 +77,7 @@
         $("#A").click( function() {
             var type = $("#type").val();
             var preValue = $("#" + type).val();
+            $('#' + type).val(parseInt(preValue)+1);
             // console.log(parseInt(preValue)+1);
             next();
         });
@@ -72,13 +87,16 @@
         });
 
         function next() {
-            $(".progressbar").attr("style", "width: calc(100/12*" +num+ "%)");
-            $("#title").html(q[num]["title"]);
-            $("#type").html(q[num]["type"]);
-            $("#A").html(q[num]["A"]);
-            $("#B").html(q[num]["B"]);
-            if ( num < 3 ) {
+            if ( num < 12 ) {
+                $(".progressbar").attr("style", "width: calc(100/12*" +num+ "%)");
+                $("#title").html(q[num]["title"]);
+                $("#type").val(q[num]["type"]);
+                $("#A").html(q[num]["A"]);
+                $("#B").html(q[num]["B"]);
                 num++;
+            } else {
+                $(".question").hide();
+                $(".result").show();
             }
         }
     </script>
