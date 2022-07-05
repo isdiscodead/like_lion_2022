@@ -89,12 +89,14 @@
             "ENFJ": {"animal": "카피바라", "explain": "카피바라 설명", "img": "https://cdn.pixabay.com/photo/2018/07/23/12/22/capybara-3556770_1280.jpg"}
         }
 
+
         function start() {
             $(".start").hide();
             next();
             $(".question").show();
         }
 
+        
         $("#A").click( function() {
             var type = $("#type").val();
             var preValue = $("#" + type).val();
@@ -107,6 +109,7 @@
             next();
         });
 
+        
         function next() {
             if ( num < 12 ) {
                 $(".progressbar").attr("style", "width: calc(100/12*" +num+ "%)");
