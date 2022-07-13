@@ -2,57 +2,46 @@ import React, { useState } from "react";
 
 // 작성한 styled components
 import {
-    EachPostLi,
-    Footer,
-    FooterBig,
-    FooterSmall,
-    LoadingDiv,
-    LoadingImg,
     Main,
     MediaDiv,
-    PagenumberDiv,
-    PagingSection,
-    PostLink,
-    PostListDiv,
-    PostRepl,
-    PostSection,
-    PostTitle,
-    PostTitleDiv,
 } from './styledComponent';
 
 // 묶어서 분리한 Component들
 import Header from './Header';
 import Slogun from './Slogun';
+import ShowPostList from "./ShowPostList";
+import Footer from './Footer';
 
-// 아이콘 import 
-// yarn add @fortawesome/free-solid-svg-icons @fortawesome/react-fontawesome @fortawesome/fontawesome-svg-core @fortawesome/free-brands-svg-icons
-import {
-    faSun,
-    faMoon,
-    faArrowsRotate,
-    faPenToSquare,
-    faLocationPin,
-    faArrowLeft,
-    faArrowRight,
-} from '@fortawesome/free-solid-svg-icons';
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faReact } from '@fortawesome/free-brands-svg-icons';
-
+// Theme 관련
 import { darkTheme, lightTheme, GlobalStyles } from './styles';
 import { ThemeProvider } from 'styled-components';
 
-// 로딩 아이콘
-import loadingIcon from './loading.svg';
-
-
 function App() {
+
+    // 게시글 배열
+    const initialPostList = [
+        {id:1, title:"우리집 고양이 츄르를 좋아해", repleCount:1},
+        {id:2, title:"할 일은 왜 줄어들지가 않냐??", repleCount:3},
+        {id:3, title:"집에 보내주세요 ...", repleCount:12},
+    ];
+
+    // 게시글 개수
+    let postCount = initialPostList.length;
+
     // 다크모드 구분 변수
     const [darkMode, setDarkMode] = useState(false);
     // 로딩 중 여부
-    const loading = true;
+    const [loading, setLoading] = useState(false);
     // 포스트 존재 여부
-    const isPost = false;
+    const [isPost, setIsPost] = useState(true);
+    const [postList, setPostList] = useState(initialPostList);
 
+    const addPost = () => {
+        postCount += 1;
+        setPostList((postList) => [
+            ...postList, {id: postCount, title: '강의 언제 다 보냐...', repleCount: 6},
+        ])
+    }
     return <>
         <ThemeProvider theme={darkMode ? darkTheme : lightTheme}>
             <GlobalStyles/>
@@ -60,53 +49,10 @@ function App() {
                 <Header darkMode={darkMode} setDarkMode={setDarkMode}/>
                 <Main>
                     <Slogun/>
-                    <PostSection>
-                        <PostTitleDiv>
-                            <FontAwesomeIcon icon={faArrowsRotate}/>
-                            <PostTitle>익명 게시판</PostTitle>
-                            <FontAwesomeIcon icon={faPenToSquare}/>
-                        </PostTitleDiv>
-
-                        <PostListDiv>
-                            { loading ? (
-                                <LoadingDiv>
-                                    <LoadingImg src={loadingIcon}/>
-                                </LoadingDiv>
-                            ) : (
-                                !isPost ? ( 
-                                <LoadingDiv>아직 기록된 글이 없습니다.</LoadingDiv>
-                                ) : (
-                                <>
-                                    <ul>
-                                        <EachPostLi>
-                                            <div>
-                                                <FontAwesomeIcon icon={faLocationPin}/>
-                                                <PostLink>꽁치, 털 밀었더니 더 못생겨져</PostLink>
-                                            </div>
-                                            <PostRepl>[2]</PostRepl>
-                                        </EachPostLi>
-                                    </ul>
-                                </>))
-                            }
-                        </PostListDiv>
-                    </PostSection>
-
-                    <PagingSection>
-                        <PagenumberDiv>
-                            <FontAwesomeIcon icon={faArrowLeft}/>
-                        </PagenumberDiv>
-                        <PagenumberDiv>2</PagenumberDiv>
-                        <PagenumberDiv>
-                            <FontAwesomeIcon icon={faArrowRight}/>
-                        </PagenumberDiv>
-                    </PagingSection>
+                    <ShowPostList loading={loading} isPost={isPost} postList={postList} addPost={addPost}/>
                 </Main>
                 
-                <Footer>
-                    <FontAwesomeIcon icon={faReact}/>
-                    <FooterBig>for react study</FooterBig>
-                    <FooterSmall>2022. by isdiscodead</FooterSmall>
-                </Footer>
+                <Footer/>
             </MediaDiv>
         </ThemeProvider>
     </>;
