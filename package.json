@@ -1,5 +1,6 @@
 {
   "dependencies": {
+    "hooks": "^0.3.2",
     "styled-components": "^5.3.5"
   }
 }

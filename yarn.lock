@@ -257,6 +257,11 @@ hoist-non-react-statics@^3.0.0:
   dependencies:
     react-is "^16.7.0"
 
+hooks@^0.3.2:
+  version "0.3.2"
+  resolved "https://registry.yarnpkg.com/hooks/-/hooks-0.3.2.tgz#a31f060c2026cea6cf1ca3eb178430e718e1c4a3"
+  integrity sha512-TqeFzUf12rSzcbm5lUls81jimUC8TmXZ4ANPxxeeMou09hrjBcHYhAQ0WgyN5YqNCXOzz7L6xVNl/+ctFuSeOw==
+
 js-tokens@^4.0.0:
   version "4.0.0"
   resolved "https://registry.yarnpkg.com/js-tokens/-/js-tokens-4.0.0.tgz#19203fb59991df98e3a287050d4647cdeaf32499"

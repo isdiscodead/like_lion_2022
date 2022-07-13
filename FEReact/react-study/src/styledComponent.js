@@ -10,7 +10,18 @@ export const MediaDiv = styled.div`
         width: 100%;
     }
 `;
-export const Header = styled.div`
+
+
+export const TitleLogoDiv = styled.div`
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    margin: 15px;
+    line-height: 1;
+`;
+
+export const HeaderDiv = styled.div`
     width: 768px;
     height: auto;
     display: flex;
@@ -21,15 +32,6 @@ export const Header = styled.div`
     @media screen and (max-width: 768px) {
         width: 100%;
     }
-`;
-
-export const TitleLogoDiv = styled.div`
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-    margin: 15px;
-    line-height: 1;
 `;
 
 export const TitleBig = styled.span`
@@ -156,4 +158,5 @@ export const FooterSmall = styled.span`
     margin: 5px;
     font-size: 5px;
 `;
+
 // export default MediaDiv;

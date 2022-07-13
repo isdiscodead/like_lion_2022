@@ -1,0 +1,16 @@
+import React from 'react'
+
+import {
+    SlogunBig,
+    SlogunSection,
+    SlogunSmall,
+} from './styledComponent';
+
+export default function Slogun() {
+  return (
+    <SlogunSection>
+        <SlogunBig>HACK YOUR LIFE</SlogunBig>
+        <SlogunSmall>내 아이디어를 내 손으로 실현한다.</SlogunSmall>
+    </SlogunSection>
+  )
+};

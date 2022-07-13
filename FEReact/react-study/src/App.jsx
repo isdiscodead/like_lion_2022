@@ -1,10 +1,11 @@
+import React, { useState } from "react";
+
 // 작성한 styled components
 import {
     EachPostLi,
     Footer,
     FooterBig,
     FooterSmall,
-    Header,
     LoadingDiv,
     LoadingImg,
     Main,
@@ -17,15 +18,11 @@ import {
     PostSection,
     PostTitle,
     PostTitleDiv,
-    SlogunBig,
-    SlogunSection,
-    SlogunSmall,
-    SubHeaderDiv,
-    TitleBig,
-    TitleLogoDiv,
-    TitleSmall,
 } from './styledComponent';
 
+// 묶어서 분리한 Component들
+import Header from './Header';
+import Slogun from './Slogun';
 
 // 아이콘 import 
 // yarn add @fortawesome/free-solid-svg-icons @fortawesome/react-fontawesome @fortawesome/fontawesome-svg-core @fortawesome/free-brands-svg-icons
@@ -40,6 +37,7 @@ import {
 } from '@fortawesome/free-solid-svg-icons';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faReact } from '@fortawesome/free-brands-svg-icons';
+
 import { darkTheme, lightTheme, GlobalStyles } from './styles';
 import { ThemeProvider } from 'styled-components';
 
@@ -49,7 +47,7 @@ import loadingIcon from './loading.svg';
 
 function App() {
     // 다크모드 구분 변수
-    const darkMode = true;
+    const [darkMode, setDarkMode] = useState(false);
     // 로딩 중 여부
     const loading = true;
     // 포스트 존재 여부
@@ -59,22 +57,9 @@ function App() {
         <ThemeProvider theme={darkMode ? darkTheme : lightTheme}>
             <GlobalStyles/>
             <MediaDiv>
-                <Header>
-                    <TitleLogoDiv>
-                        <TitleBig>멋사</TitleBig>
-                        <TitleSmall>익명 게시판</TitleSmall>
-                    </TitleLogoDiv>
-                    <SubHeaderDiv>
-                        { darkMode ? <div><FontAwesomeIcon icon={faSun}/></div> : <div><FontAwesomeIcon icon={faMoon}/></div> }
-                    </SubHeaderDiv>
-                </Header>
-
+                <Header darkMode={darkMode} setDarkMode={setDarkMode}/>
                 <Main>
-                    <SlogunSection>
-                        <SlogunBig>HACK YOUR LIFE</SlogunBig>
-                        <SlogunSmall>내 아이디어를 내 손으로 실현한다.</SlogunSmall>
-                    </SlogunSection>
-
+                    <Slogun/>
                     <PostSection>
                         <PostTitleDiv>
                             <FontAwesomeIcon icon={faArrowsRotate}/>
