@@ -1,7 +1,12 @@
 import React from 'react'
-import { Link, Outlet } from 'react-router-dom'
+import { Link, Outlet, useNavigate } from 'react-router-dom'
 
 const Menubar = () => {
+  const navigate = useNavigate();
+  const goHome = () => {
+    navigate('/');
+  }
+
   return (
     <div>
       <ul>
@@ -10,6 +15,8 @@ const Menubar = () => {
       </ul>
       <hr/>
       <Outlet/>
+
+      <button onClick={goHome} type="button">홈으로 돌아가기</button>
     </div>
   )
 } 

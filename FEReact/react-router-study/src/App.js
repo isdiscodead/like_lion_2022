@@ -17,7 +17,8 @@ const App = () => {
           <Route path=":movieId" element={<Movie/>}/>
         </Route>
       </Route>
-    </Routes>
+      <Route path="*" element={<div>There's nothing here!</div>} />
+    </Routes> 
   )
 }
 
