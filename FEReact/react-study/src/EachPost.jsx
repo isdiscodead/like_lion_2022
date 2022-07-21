@@ -1,4 +1,5 @@
 import React from 'react'
+import { useNavigate } from 'react-router-dom';
 
 // 아이콘 import 
 import {
@@ -7,20 +8,25 @@ import {
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 
 import {
-    EachPostLi,
-    PostLink,
-    PostRepl,
+  CursorDiv,
+  EachPostLi,
+  PostLink,
+  PostRepl,
 } from './styledComponent';
 
 
-function EachPost({title, repleCount}) {
+function EachPost({ title, postID }) {
+  const navigate = useNavigate();
+  const goPost = () => {
+    navigate(`${ '/post/' + postID }`)
+  }
+
   return (
-    <EachPostLi>
-        <div>
+    <EachPostLi onClick={goPost}>
+        <CursorDiv>
             <FontAwesomeIcon icon={faLocationPin}/>
             <PostLink>{title}</PostLink>
-        </div>
-        <PostRepl>[{repleCount}]</PostRepl>
+        </CursorDiv>
     </EachPostLi>
   )
 }
