@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react'
+import React, { useState, useEffect, useCallback } from 'react'
 import { useNavigate } from 'react-router-dom';
 
 // 아이콘 import 
@@ -45,12 +45,14 @@ function ShowPostList() {
     const [isPost, setIsPost] = useState(true);
     const [postList, setPostList] = useState([]);
 
-    const addPost = () => {
+    // useCallback으로 감싸서 최적화 진행
+    // 최적화하지 않아도 되지만, 내용이 많아서 렌더가 오래 걸릴 경우는 필수 ! 
+    const addPost = useCallback(() => {
         postCount += 1;
         setPostList((postList) => [
             ...postList, {id: postCount, title: '강의 언제 다 보냐...'},
         ])
-    }
+    }, [postList]);
 
     // write 화면 전환 navigate
     const navigate = useNavigate();
