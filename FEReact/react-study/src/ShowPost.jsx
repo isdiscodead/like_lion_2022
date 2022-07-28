@@ -1,4 +1,4 @@
-import React, { useEffect, useState, useMemo } from 'react';
+import React, { useEffect, useState, useMemo, useRef } from 'react';
 
 import {
   PostSection,
@@ -39,7 +39,10 @@ const ShowPost = () => {
   const [postLoading, setPostLoading] = useState(true);
   const [replLoading, setReplLoading] = useState(true);
 
-  //useEffect 2개 사용하기 ( 게시글, 댓글 )
+  const repInput = useRef();
+
+  // useEffect 2개 사용하기 ( 게시글, 댓글 )
+  // 0.5초 뒤 내용 로딩 
   useEffect( () => {
     setTimeout( () => {
       setPost(postData);
@@ -49,9 +52,11 @@ const ShowPost = () => {
 
   useEffect( () => {
     setTimeout( () => {
-      setPost(postData);
+      setRepls(replData);
       setReplLoading(false);
-    }, 500)
+    }, 500);
+
+    repInput.current.focus(); // 댓글 입력 창에 포커스 
   });
 
   // input창 상태관리
@@ -76,7 +81,7 @@ const ShowPost = () => {
           <PostTitle>{post && post.title}</PostTitle>
         </PostTitleDiv>
 
-        {postLoading ? (
+        {postLoading ? ( // 로딩 중에는 로딩 이미지 출력 
           <LoadingDiv>
             <LoadingImg src={`${process.env.PUBLIC_URL}/loading.svg`} />
           </LoadingDiv>
@@ -103,7 +108,7 @@ const ShowPost = () => {
         )}
 
         <WriterDiv>
-          <ReplInput onChange={onChange}></ReplInput>
+          <ReplInput onChange={onChange} ref={repInput}></ReplInput>
           <ReplSubmitDiv>
             <span>입력</span>
           </ReplSubmitDiv>
