@@ -1,4 +1,6 @@
+import axios from 'axios';
 import React, { useEffect, useState, useMemo, useRef } from 'react';
+import { useParams } from 'react-router-dom';
 
 import {
   PostSection,
@@ -19,19 +21,6 @@ import {
   ReplInput,
   ReplSubmitDiv,
 } from './styledComponent';
-
-const postData = {
-  title: `바운스`,
-  contents: `아기사자가 돌아서면 두 눈이 마주칠까, 심장이 bounce, bounce 두근 대 들릴까 봐 겁나
-  한참을 망설이다 용기를 내 밤새워 준비한 내 개사 들어줘, 처음 본 순간부터 아기사자랑 친해질꺼야 생각했어~~,
-  Baby, you're my trampoline You make me bounce Bounde - 아기사자들은 다 귀여워 최고 -
-  `,
-};
-
-const replData = [
-  { id: 2, content: `반가워요!` },
-  { id: 3, content: `멋쟁이 사자처럼 최고!` },
-];
 
 const PostAndRepl = React.memo(({post, postLoading, replLoading, repls, replCount}) => {
   return (
@@ -59,9 +48,9 @@ const PostAndRepl = React.memo(({post, postLoading, replLoading, repls, replCoun
       ) : (
         repls &&
         repls.map((element) => (
-          <PostReplDiv key={element.id}>
+          <PostReplDiv key={element}>
             <ReplWriter>익명</ReplWriter>
-            <Repl>{element.content}</Repl>
+            <Repl>{element}</Repl>
           </PostReplDiv>
         ))
       )}
@@ -69,7 +58,9 @@ const PostAndRepl = React.memo(({post, postLoading, replLoading, repls, replCoun
   )
 }); 
 
-const ShowPost = () => {
+const ShowPost = ({apiUrl}) => {
+  const Params = useParams();
+
   const [post, setPost] = useState(null);
   const [repls, setRepls] = useState([]);
   const [postLoading, setPostLoading] = useState(true);
@@ -77,23 +68,17 @@ const ShowPost = () => {
 
   const repInput = useRef();
 
-  // useEffect 2개 사용하기 ( 게시글, 댓글 )
-  // 0.5초 뒤 내용 로딩 
-  useEffect( () => {
-    setTimeout( () => {
-      setPost(postData);
-      setPostLoading(false);
-    }, 500)
-  });
-
-  useEffect( () => {
-    setTimeout( () => {
-      setRepls(replData);
-      setReplLoading(false);
-    }, 500);
-
-    repInput.current.focus(); // 댓글 입력 창에 포커스 
-  });
+  // 실제 데이터 페칭
+  useEffect(() => {
+    axios.get(`${apiUrl}posts/${Params.postID}`)
+      .then(response => {
+        setPost(response.data)
+        setPostLoading(false)
+        repInput.current.focus(); // 댓글 창에 포커스 
+        setRepls(response.data.repls);
+        setReplLoading(false)
+      })
+  }, [])
 
   // input창 상태관리
   const [repl, setRepl] = useState('');
@@ -110,6 +95,20 @@ const ShowPost = () => {
   // memo hook실습
   const replCount = useMemo( () => countRepls(repls), [repls] )
 
+  // 댓글 달기 
+  const onSubmitRepl = () => {
+    axios.post(`${apiUrl}repl/`, {
+      contents : repl,
+      post: Params.postID,
+    }).then(() => {
+      window.location.reload();
+    })
+  }
+
+  if ( !Params.postID ) {
+    return <PostSection>잘못된 접근입니다.</PostSection>;
+  }
+
   return (
     <div>
       <PostSection>
@@ -122,7 +121,7 @@ const ShowPost = () => {
         />
         <WriterDiv>
           <ReplInput onChange={onChange} ref={repInput}></ReplInput>
-          <ReplSubmitDiv>
+          <ReplSubmitDiv onClick={onSubmitRepl}>
             <span>입력</span>
           </ReplSubmitDiv>
         </WriterDiv>

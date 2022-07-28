@@ -1,25 +1,27 @@
 import React, { useState } from 'react';
+import axios from 'axios';
+import { useNavigate } from 'react-router-dom';
 
 import {
-  ContentsInput,
   PostSection,
   PostSubmit,
   PostSubmitDiv,
   PostWriteDiv,
-  TitleInput,
 } from './styledComponent';
 
 import WriteTitle from './WriteTitle';
 import InputPost from './InputPost';
 
 // arrow function으로 컴포넌트 쪼개기 
-const SubmitComponent = React.memo(() => (
+const SubmitComponent = React.memo(({onSubmit}) => (
   <PostSubmitDiv>
-    <PostSubmit>작성완료</PostSubmit>
+    <PostSubmit onClick={onSubmit}>작성완료</PostSubmit>
   </PostSubmitDiv>
 ));
 
-function WritePost() {
+function WritePost({apiUrl}) {
+  const navigate = useNavigate();
+
   // useState 만들어주기
   const [inputs, setInputs] = useState({
     title: '',
@@ -38,6 +40,17 @@ function WritePost() {
       });
   }
 
+  const onSubmit = () => {
+    console.log(inputs)
+    axios.post(`${apiUrl}posts/`, {
+      title : inputs.title,
+      contents : inputs.contents,
+      repls : [],
+    }).then(response => {
+      navigate('../');
+    })
+  }
+
   return (
     <PostSection>
 
@@ -47,7 +60,7 @@ function WritePost() {
 
       <InputPost onChange={onChange} contents={contents} title={title} />
       
-      <SubmitComponent/>
+      <SubmitComponent onSubmit={onSubmit}/>
     </PostSection>
   );
 }

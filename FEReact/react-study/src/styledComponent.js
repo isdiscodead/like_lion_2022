@@ -142,6 +142,7 @@ export const PagenumberDiv = styled.div`
     align-items: center;
     border: 1px solid #f39926;
     border-radius: 5px;
+    cursor: pointer;
 `;
 export const FooterDiv = styled.div`
     margin-top: 30px;

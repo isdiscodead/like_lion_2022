@@ -19,6 +19,9 @@ import WritePost from "./WritePost";
 import { darkTheme, lightTheme, GlobalStyles } from './styles';
 import { ThemeProvider } from 'styled-components';
 
+// api 주소
+const API_URL = "https://reactapitest.pythonanywhere.com/api/" 
+
 function App() {
     // 다크모드 구분 변수
     const [darkMode, setDarkMode] = useState(false);
@@ -31,10 +34,10 @@ function App() {
                 <Main>
                     <Slogun/>
                     <Routes>
-                        <Route path="/" element={ <ShowPostList/> }>
+                        <Route path="/" element={ <ShowPostList apiUrl={API_URL} /> }>
                         </Route>
-                        <Route path="/write" element={<WritePost/>}></Route>
-                        <Route path="/post/:postID" element={<ShowPost/>}></Route>
+                        <Route path="/write" element={<WritePost apiUrl={API_URL}/>}></Route>
+                        <Route path="/post/:postID" element={<ShowPost apiUrl={API_URL}/>}></Route>
                     </Routes>
                     
                 </Main>
