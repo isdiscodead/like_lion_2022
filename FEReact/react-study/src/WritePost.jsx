@@ -13,11 +13,11 @@ import WriteTitle from './WriteTitle';
 import InputPost from './InputPost';
 
 // arrow function으로 컴포넌트 쪼개기 
-const SubmitComponent = () => (
+const SubmitComponent = React.memo(() => (
   <PostSubmitDiv>
     <PostSubmit>작성완료</PostSubmit>
   </PostSubmitDiv>
-)
+));
 
 function WritePost() {
   // useState 만들어주기
@@ -43,10 +43,10 @@ function WritePost() {
 
       <WriteTitle/>
 
-      <PostWriteDiv>
-        
-      </PostWriteDiv>
-        <InputPost onChange={onChange} contents={contents} title={title} />
+      <PostWriteDiv />
+
+      <InputPost onChange={onChange} contents={contents} title={title} />
+      
       <SubmitComponent/>
     </PostSection>
   );

@@ -6,7 +6,7 @@ import {
     SlogunSmall,
 } from './styledComponent';
 
-export default function Slogun() {
+function Slogun() {
   return (
     <SlogunSection>
         <SlogunBig>HACK YOUR LIFE</SlogunBig>
@@ -14,3 +14,5 @@ export default function Slogun() {
     </SlogunSection>
   )
 };
+
+export default React.memo(Slogun);

@@ -8,6 +8,6 @@ function WriteTitle() {
         <PostTitle>글쓰기</PostTitle>
     </PostTitleDiv>
   )
-}
+};
 
-export default WriteTitle
+export default React.memo(WriteTitle);

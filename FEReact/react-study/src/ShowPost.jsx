@@ -33,6 +33,42 @@ const replData = [
   { id: 3, content: `멋쟁이 사자처럼 최고!` },
 ];
 
+const PostAndRepl = React.memo(({post, postLoading, replLoading, repls, replCount}) => {
+  return (
+    <>
+      <PostTitleDiv>
+        <PostTitle>{post && post.title}</PostTitle>
+      </PostTitleDiv>
+
+      {postLoading ? ( // 로딩 중에는 로딩 이미지 출력 
+        <LoadingDiv>
+          <LoadingImg src={`${process.env.PUBLIC_URL}/loading.svg`} />
+        </LoadingDiv>
+      ) : (
+        <PostReplDiv>{post && post.contents}</PostReplDiv>
+      )}
+
+      {/* post contents */}
+
+      <ReplTitleDiv>댓글 {replCount} </ReplTitleDiv>
+
+      {replLoading ? (
+        <LoadingDiv>
+          <LoadingImg src={`${process.env.PUBLIC_URL}/loading.svg`} />
+        </LoadingDiv>
+      ) : (
+        repls &&
+        repls.map((element) => (
+          <PostReplDiv key={element.id}>
+            <ReplWriter>익명</ReplWriter>
+            <Repl>{element.content}</Repl>
+          </PostReplDiv>
+        ))
+      )}
+    </>
+  )
+}); 
+
 const ShowPost = () => {
   const [post, setPost] = useState(null);
   const [repls, setRepls] = useState([]);
@@ -77,36 +113,13 @@ const ShowPost = () => {
   return (
     <div>
       <PostSection>
-        <PostTitleDiv>
-          <PostTitle>{post && post.title}</PostTitle>
-        </PostTitleDiv>
-
-        {postLoading ? ( // 로딩 중에는 로딩 이미지 출력 
-          <LoadingDiv>
-            <LoadingImg src={`${process.env.PUBLIC_URL}/loading.svg`} />
-          </LoadingDiv>
-        ) : (
-          <PostReplDiv>{post && post.contents}</PostReplDiv>
-        )}
-
-        {/* post contents */}
-
-        <ReplTitleDiv>댓글 {replCount} </ReplTitleDiv>
-
-        {replLoading ? (
-          <LoadingDiv>
-            <LoadingImg src={`${process.env.PUBLIC_URL}/loading.svg`} />
-          </LoadingDiv>
-        ) : (
-          repls &&
-          repls.map((element) => (
-            <PostReplDiv key={element.id}>
-              <ReplWriter>익명</ReplWriter>
-              <Repl>{element.content}</Repl>
-            </PostReplDiv>
-          ))
-        )}
-
+        <PostAndRepl
+          post={post}
+          postLoading={postLoading}
+          replCount={replCount}
+          replLoading={replLoading}
+          repls={repls}
+        />
         <WriterDiv>
           <ReplInput onChange={onChange} ref={repInput}></ReplInput>
           <ReplSubmitDiv>
